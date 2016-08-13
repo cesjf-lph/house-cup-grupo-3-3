@@ -10,7 +10,7 @@
         <h1>Novo aluno</h1>
         <form method="post" action="">
             <div>
-                <label>Nome completo:
+                <label>Nome:
                 <input type="text" name="nomeCompleto" />
                 </label>
             </div>

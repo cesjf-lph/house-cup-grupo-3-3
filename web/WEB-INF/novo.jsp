@@ -11,7 +11,7 @@
         <form method="post" action="">
             <div>
                 <label>Nome:
-                <input type="text" name="nomeCompleto" />
+                    <input type="text" name="nomeCompleto" placeholder="Nome completo"/>
                 </label>
             </div>
             <div>

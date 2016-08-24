@@ -7,6 +7,8 @@ package controllers;
 
 import classes.Aluno;
 import classes.DAO.AlunoDAOJPA;
+import classes.DAO.OcorrenciaDAOJPA;
+import classes.Ocorrencia;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,9 +67,14 @@ public class alunoDAOController extends HttpServlet {
             aluno.setIdade(Integer.parseInt(request.getParameter("idade")));
             aluno.setSexo(Boolean.parseBoolean(request.getParameter("sexo")));
             aluno.setGrupo(request.getParameter("grupo"));
+            Ocorrencia ocorrencia = new Ocorrencia();
+            ocorrencia.setPontos(10);
             try {
                 AlunoDAOJPA dao = new AlunoDAOJPA(ut, emf);
                 dao.create(aluno);
+                OcorrenciaDAOJPA dao2 = new OcorrenciaDAOJPA(ut, emf);
+                dao2.create(ocorrencia);
+                
             } catch (Exception ex) {
                 Logger.getLogger(alunoDAOController.class.getName()).log(Level.SEVERE, null, ex);
                 response.sendRedirect("listar.html?erro=Erro ao criar o Candidato!");

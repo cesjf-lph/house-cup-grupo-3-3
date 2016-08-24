@@ -11,7 +11,7 @@ public class Ocorrencia {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int pontos;
-
+    
     public Long getId() {
         return id;
     }
@@ -27,4 +27,4 @@ public class Ocorrencia {
     public void setPontos(int pontos) {
         this.pontos = pontos;
     }
-}
+    }

@@ -39,7 +39,7 @@
                             </c:if>
                         </td>
                         <td><center>${aluno.grupo}</center></td>
-                        <td><center>+  -</center></td>
+                        <td><center></center></td>
                         <td><center>+  -</center></td>
                     </tr>
                 </c:forEach>

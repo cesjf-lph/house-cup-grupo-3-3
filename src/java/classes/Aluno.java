@@ -21,8 +21,7 @@ public class Aluno implements Serializable{
     private String grupo;
     @OneToMany
     List<Ocorrencia> ocorrencias;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date descricao;
+
 
     public Aluno() {
     }
@@ -66,13 +65,4 @@ public class Aluno implements Serializable{
     public void setGrupo(String grupo) {
         this.grupo = grupo;
     }
-
-    public Date getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(Date descricao) {
-        this.descricao = descricao;
-    }
-    
 }

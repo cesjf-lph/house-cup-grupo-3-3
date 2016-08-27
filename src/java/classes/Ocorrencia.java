@@ -1,9 +1,11 @@
 package classes;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 @Entity
 public class Ocorrencia {
@@ -11,7 +13,9 @@ public class Ocorrencia {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int pontos;
-    
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date descricao;
+
     public Long getId() {
         return id;
     }
@@ -26,5 +30,14 @@ public class Ocorrencia {
 
     public void setPontos(int pontos) {
         this.pontos = pontos;
+        
+    }
+
+    public Date getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(Date descricao) {
+        this.descricao = descricao;
     }
     }

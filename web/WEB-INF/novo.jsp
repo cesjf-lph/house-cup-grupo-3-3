@@ -6,6 +6,9 @@
         <title>Novo aluno</title>
     </head>
     <body>
+    <center>
+        <fieldset style="width:200px">
+            <legend>Novo aluno</legend>
         <jsp:include page="fragments/menu.jspf" />
         <h1>Novo aluno</h1>
         <form method="post" action="">
@@ -36,5 +39,7 @@
                 <input type="submit" value="cadastrar" />
             </div>
         </form>
+        </fieldset>
+    </center>
     </body>
 </html>

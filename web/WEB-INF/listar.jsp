@@ -8,6 +8,9 @@
         <title>Listar Alunos</title>
     </head>
     <body>
+    <center>
+        <fieldset style="width:200px">
+            <legend>Listar alunos</legend>
         <jsp:include page="fragments/menu.jspf" />
         <c:if test="${erro != null}">
             <div style="border: 1px solid red;">${erro}</div>
@@ -46,5 +49,7 @@
                 
             </tbody>
         </table>
+        </fieldset>
+    </center>
     </body>
 </html>

@@ -7,7 +7,7 @@
     </head>
     <body>
     <center>
-        <fieldset style="width:200px">
+        <fieldset style="width:500px">
             <legend>Novo aluno</legend>
         <jsp:include page="fragments/menu.jspf" />
         <h1>Novo aluno</h1>

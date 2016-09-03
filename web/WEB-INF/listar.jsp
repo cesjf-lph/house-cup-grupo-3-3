@@ -9,7 +9,7 @@
     </head>
     <body>
     <center>
-        <fieldset style="width:200px">
+        <fieldset style="width:500px">
             <legend>Listar alunos</legend>
         <jsp:include page="fragments/menu.jspf" />
         <c:if test="${erro != null}">

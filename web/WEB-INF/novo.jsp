@@ -8,7 +8,7 @@
     <body>
     <center>
         <fieldset style="width:500px">
-            <legend>Novo aluno</legend>
+            <legend>Cadastro de Aluno aluno</legend>
         <jsp:include page="fragments/menu.jspf" />
         <h1>Novo aluno</h1>
         <form method="post" action="">
@@ -21,22 +21,31 @@
                 <label>Idade:
                 <input type="number" name="idade" />
                 </label>
-            </div>
+            </div> <p>
             <div>
-                <label>Sexo:
+                <label>Sexo: <br>
                 <label>Masculino<input type="radio" name="sexo" value="false" />
                 <label>Feminino<input type="radio" name="sexo" value="true" />
                 </label>
             </div>
+            <p>
             <div>
-                <label>Grupo 1<input type="radio" name="grupo" value="1" />
-                <label>Grupo 2<input type="radio" name="grupo" value="2" />
-                    <label>Grupo 3<input type="radio" name="grupo" value="3" />
+                <label>Grupo 1 <input type="radio" name="grupo" value="1" />
+                <label>Grupo 2 <input type="radio" name="grupo" value="2" />
+                    <label>Grupo 3 <input type="radio" name="grupo" value="3" />
                         <label>Grupo 4<input type="radio" name="grupo" value="4" />
                 </label>
-            </div>
+            </div><p>
             <div>
-                <input type="submit" value="cadastrar" />
+                <input type="submit" value="Cadastrar" /> 
+
+                <input type="button" value="Cancelar" onClick="nova()"/>
+                <script type="text/javascript">
+                function nova(){
+                location.hreaf="listar.html"
+                }
+                </script>
+                <input type="reset" value="Limpar" />
             </div>
         </form>
         </fieldset>

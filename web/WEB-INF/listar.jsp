@@ -20,8 +20,6 @@
             <thead>
                 <tr>
                     <th>Nome Completo</th>
-                    <th>Idade</th>
-                    <th>Sexo</th>
                     <th>Grupo</th>
                     <th>Pontos</th>
                     <th>Pontuar</th>
@@ -32,15 +30,6 @@
                 <c:forEach items="${alunos}" var="aluno">
                     <tr>
                         <td>${aluno.nomeCompleto}</td>
-                        <td>${aluno.idade}</td>
-                        <td>
-                            <c:if test="${aluno.sexo == true}">
-                                <label>Feminino</label>
-                            </c:if>
-                            <c:if test="${aluno.sexo == false}">
-                                <label>Masculino</label>
-                            </c:if>
-                        </td>
                         <td><center>${aluno.grupo}</center></td>
                         <td><center></center></td>
                         <td><center>+  -</center></td>

@@ -15,7 +15,7 @@ public class Ocorrencia implements Serializable {
     private Long id;
     private int pontos;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date descricao;
+    private Date dataOcorrencia;
 
     public Long getId() {
         return id;
@@ -35,10 +35,10 @@ public class Ocorrencia implements Serializable {
     }
 
     public Date getDescricao() {
-        return descricao;
+        return dataOcorrencia;
     }
 
-    public void setDescricao(Date descricao) {
-        this.descricao = descricao;
+    public void setDescricao(Date dataOcorrencia) {
+        this.dataOcorrencia = dataOcorrencia;
     }
     }

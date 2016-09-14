@@ -64,9 +64,7 @@ public class alunoDAOController extends HttpServlet {
             Date dataAtual = new Date();
             Aluno aluno = new Aluno();
             aluno.setNomeCompleto(request.getParameter("nomeCompleto"));
-            aluno.setIdade(Integer.parseInt(request.getParameter("idade")));
-            aluno.setSexo(Boolean.parseBoolean(request.getParameter("sexo")));
-            aluno.setGrupo(request.getParameter("grupo"));
+            aluno.setGrupo(Integer.parseInt(request.getParameter("grupo")));
             Ocorrencia ocorrencia = new Ocorrencia();
             ocorrencia.setPontos(10);
             try {

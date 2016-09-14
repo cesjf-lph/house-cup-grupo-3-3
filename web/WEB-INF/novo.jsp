@@ -17,17 +17,6 @@
                     <input type="text" name="nomeCompleto" placeholder="Nome completo"/>
                 </label>
             </div>
-            <div>
-                <label>Idade:
-                <input type="number" name="idade" />
-                </label>
-            </div> <p>
-            <div>
-                <label>Sexo: <br>
-                <label>Masculino<input type="radio" name="sexo" value="false" />
-                <label>Feminino<input type="radio" name="sexo" value="true" />
-                </label>
-            </div>
             <p>
             <div>
                 <label>Grupo 1 <input type="radio" name="grupo" value="1" />

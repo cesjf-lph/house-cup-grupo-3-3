@@ -14,9 +14,7 @@ public class Aluno implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nomeCompleto;
-    private Integer idade;
-    private Boolean sexo;
-    private String grupo;
+    private int grupo;
     @OneToMany
     List<Ocorrencia> ocorrencias;
 
@@ -40,27 +38,17 @@ public class Aluno implements Serializable{
         this.nomeCompleto = nomeCompleto;
     }
 
-    public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
-
-    public Boolean getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(Boolean sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getGrupo() {
+    /**
+     * @return the grupo
+     */
+    public int getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(String grupo) {
+    /**
+     * @param grupo the grupo to set
+     */
+    public void setGrupo(int grupo) {
         this.grupo = grupo;
     }
 }

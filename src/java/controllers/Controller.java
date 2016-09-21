@@ -29,8 +29,8 @@ import javax.transaction.UserTransaction;
  *
  * @author Airton
  */
-@WebServlet(name = "AlunoDAOController", urlPatterns = {"/listar.html", "/novo.html"})
-public class alunoDAOController extends HttpServlet {
+@WebServlet(name = "AlunoDAOController", urlPatterns = {"/principal.html", "/listar.html", "/novo.html"})
+public class Controller extends HttpServlet {
 
     @PersistenceUnit(unitName= "jpa-web-pu")
     EntityManagerFactory emf;
@@ -44,9 +44,9 @@ public class alunoDAOController extends HttpServlet {
             List<Aluno> lista = new ArrayList<>();
             try {
                 AlunoDAOJPA dao = new AlunoDAOJPA(ut, emf);
-                lista = dao.findCandidatoEntities();
+                lista = dao.findAlunoEntities();
             } catch (Exception ex) {
-                Logger.getLogger(alunoDAOController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 lista = new ArrayList<Aluno>();
                 request.setAttribute("erro", "Problema ao listar os aluno!");
             }
@@ -54,8 +54,11 @@ public class alunoDAOController extends HttpServlet {
             request.setAttribute("alunos", lista);
             request.getRequestDispatcher("/WEB-INF/listar.jsp").forward(request, response);
         } 
-        else if (request.getRequestURI().contains("novo.html"))
+        else if (request.getRequestURI().contains("novo.html")){
             request.getRequestDispatcher("/WEB-INF/novo.jsp").forward(request, response);
+        } else if (request.getRequestURI().contains("principal.html")){
+            request.getRequestDispatcher("WEB-INF/principal.jsp").forward(request, response);
+        }
     }
     
     @Override
@@ -74,8 +77,8 @@ public class alunoDAOController extends HttpServlet {
                 dao2.create(ocorrencia);
                 
             } catch (Exception ex) {
-                Logger.getLogger(alunoDAOController.class.getName()).log(Level.SEVERE, null, ex);
-                response.sendRedirect("listar.html?erro=Erro ao criar o Candidato!");
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                response.sendRedirect("listar.html?erro=Erro ao criar o Aluno!");
                 return;
             }
 

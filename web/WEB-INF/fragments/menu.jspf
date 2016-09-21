@@ -1,7 +1,10 @@
 <nav>
-    <h2>Candidatos</h2>
-    <ul>
-        <li><a href="listar.html">Listar</a></li>
-        <li><a href="novo.html">Novo</a></li>
-    </ul>
+    
+    <h2>SIGA Alunos</h2>
+        
+        <a href="principal.html" style="text-decoration:none">Principal</a> |
+        <a href="novo.html" style="text-decoration:none">Novo</a> |
+        <a href="listar.html" style="text-decoration:none"> Listar</a>
+        
+        
 </nav>

@@ -7,7 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar Alunos</title>
     </head>
-    <body>
+    <body link="black" vlink="black" alink="#003399">
     <center>
         <fieldset style="width:500px">
             <legend>Listar alunos</legend>
@@ -15,7 +15,7 @@
         <c:if test="${erro != null}">
             <div style="border: 1px solid red;">${erro}</div>
         </c:if>
-        <h1>Listar Alunos</h1>
+        <h2>Listar Alunos</h2>
         <table>
             <thead>
                 <tr>

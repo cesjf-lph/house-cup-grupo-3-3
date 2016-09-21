@@ -5,12 +5,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Novo aluno</title>
     </head>
-    <body>
+    <body link="black" vlink="black" alink="#003399">
     <center>
         <fieldset style="width:500px">
-            <legend>Cadastro de Aluno aluno</legend>
+            <legend>Cadastro de Aluno</legend>
         <jsp:include page="fragments/menu.jspf" />
-        <h1>Novo aluno</h1>
+        <h2>Novo aluno</h2>
         <form method="post" action="">
             <div>
                 <label>Nome:

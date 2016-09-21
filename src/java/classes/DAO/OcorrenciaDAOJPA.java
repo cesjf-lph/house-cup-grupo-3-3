@@ -72,8 +72,8 @@ public class OcorrenciaDAOJPA implements Serializable {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Long id = ocorrencia.getId();
-                if (findCandidato(id) == null) {
-                    throw new NonexistentEntityException("The candidato with id " + id + " no longer exists.");
+                if (findAluno(id) == null) {
+                    throw new NonexistentEntityException("The aluno with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -112,15 +112,15 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
 
-    public List<Ocorrencia> findCandidatoEntities() {
-        return findCandidatoEntities(true, -1, -1);
+    public List<Ocorrencia> findAlunoEntities() {
+        return findAlunoEntities(true, -1, -1);
     }
 
-    public List<Ocorrencia> findCandidatoEntities(int maxResults, int firstResult) {
-        return findCandidatoEntities(false, maxResults, firstResult);
+    public List<Ocorrencia> findAlunoEntities(int maxResults, int firstResult) {
+        return findAlunoEntities(false, maxResults, firstResult);
     }
 
-    private List<Ocorrencia> findCandidatoEntities(boolean all, int maxResults, int firstResult) {
+    private List<Ocorrencia> findAlunoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
@@ -136,7 +136,7 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
 
-    public Ocorrencia findCandidato(Long id) {
+    public Ocorrencia findAluno(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Ocorrencia.class, id);
@@ -145,7 +145,7 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
 
-    public int getCandidatoCount() {
+    public int getAlunoCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();

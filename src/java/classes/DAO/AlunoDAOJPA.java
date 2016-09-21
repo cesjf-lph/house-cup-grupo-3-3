@@ -35,12 +35,12 @@ public class AlunoDAOJPA implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Aluno candidato) throws RollbackFailureException, Exception {
+    public void create(Aluno aluno) throws RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            em.persist(candidato);
+            em.persist(aluno);
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -56,12 +56,12 @@ public class AlunoDAOJPA implements Serializable {
         }
     }
 
-    public void edit(Aluno candidato) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Aluno aluno) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            candidato = em.merge(candidato);
+            aluno = em.merge(aluno);
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -71,9 +71,9 @@ public class AlunoDAOJPA implements Serializable {
             }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = candidato.getId();
-                if (findCandidato(id) == null) {
-                    throw new NonexistentEntityException("The candidato with id " + id + " no longer exists.");
+                Long id = aluno.getId();
+                if (findAluno(id) == null) {
+                    throw new NonexistentEntityException("The aluno with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -112,15 +112,15 @@ public class AlunoDAOJPA implements Serializable {
         }
     }
 
-    public List<Aluno> findCandidatoEntities() {
-        return findCandidatoEntities(true, -1, -1);
+    public List<Aluno> findAlunoEntities() {
+        return findAlunoEntities(true, -1, -1);
     }
 
-    public List<Aluno> findCandidatoEntities(int maxResults, int firstResult) {
-        return findCandidatoEntities(false, maxResults, firstResult);
+    public List<Aluno> findAlunoEntities(int maxResults, int firstResult) {
+        return findAlunoEntities(false, maxResults, firstResult);
     }
 
-    private List<Aluno> findCandidatoEntities(boolean all, int maxResults, int firstResult) {
+    private List<Aluno> findAlunoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
@@ -136,7 +136,7 @@ public class AlunoDAOJPA implements Serializable {
         }
     }
 
-    public Aluno findCandidato(Long id) {
+    public Aluno findAluno(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Aluno.class, id);
@@ -145,7 +145,7 @@ public class AlunoDAOJPA implements Serializable {
         }
     }
 
-    public int getCandidatoCount() {
+    public int getAlunoCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();

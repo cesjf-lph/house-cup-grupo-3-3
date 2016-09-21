@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Aluno implements Serializable{
@@ -15,8 +14,6 @@ public class Aluno implements Serializable{
     private Long id;
     private String nomeCompleto;
     private int grupo;
-    @OneToMany
-    List<Ocorrencia> ocorrencias;
 
 
     public Aluno() {

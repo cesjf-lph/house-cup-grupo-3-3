@@ -40,37 +40,77 @@ public class ListarAlunosController extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getRequestURI().contains("listar.html")) {
-            List<Aluno> lista = new ArrayList<>();
-            List<Ocorrencia> ocorrencias = new ArrayList<Ocorrencia>();
-            try {
-                AlunoDAOJPA dao = new AlunoDAOJPA(ut, emf);
-                lista = dao.findAlunoEntities();
-                OcorrenciaDAOJPA daoOcorrencia = new OcorrenciaDAOJPA(ut, emf);
-                ocorrencias = daoOcorrencia.findOcorrenciaEntities();
-                lista = dao.findAlunoEntities();
-            } catch (Exception ex) {
-                Logger.getLogger(ListarAlunosController.class.getName()).log(Level.SEVERE, null, ex);
-                lista = new ArrayList<Aluno>();
-                request.setAttribute("erro", "Problema ao listar os aluno!");
-            }
 
-            List<AlunoTO> alunos = new ArrayList<AlunoTO>();
-            for (Aluno aluno : lista) {
-                int pontuacaoTotal = 0;
-                for (Ocorrencia ocorrencia : ocorrencias) {
-                    if (aluno.getId() == ocorrencia.getAluno().getId()) {
-                        pontuacaoTotal+= ocorrencia.getPontos();
-                    }
+        if (request.getRequestURI().contains("listar.html")) {
+            String idGrupo = request.getParameter("id");
+            if (idGrupo != null) {
+                List<Aluno> lista = new ArrayList<>();
+                List<Ocorrencia> ocorrencias = new ArrayList<Ocorrencia>();
+                try {
+                    AlunoDAOJPA dao = new AlunoDAOJPA(ut, emf);
+                    lista = dao.findAlunoEntities();
+                    OcorrenciaDAOJPA daoOcorrencia = new OcorrenciaDAOJPA(ut, emf);
+                    ocorrencias = daoOcorrencia.findOcorrenciaEntities();
+                    lista = dao.findAlunoEntities();
+                } catch (Exception ex) {
+                    Logger.getLogger(ListarAlunosController.class.getName()).log(Level.SEVERE, null, ex);
+                    lista = new ArrayList<Aluno>();
+                    request.setAttribute("erro", "Problema ao listar os aluno!");
                 }
-                AlunoTO alunoTO = new  AlunoTO();
-                alunoTO.setGrupo(aluno.getGrupo());
-                alunoTO.setNome(aluno.getNomeCompleto());
-                alunoTO.setPontos(String.valueOf(pontuacaoTotal));
-                alunos.add(alunoTO);
+                int pontuacaoTotalGrupo = 0;
+                List<AlunoTO> alunos = new ArrayList<AlunoTO>();
+                for (Aluno aluno : lista) {
+                    int pontuacaoTotalPorAluno = 0;
+                    for (Ocorrencia ocorrencia : ocorrencias) {
+                        if (aluno.getId() == ocorrencia.getAluno().getId()) {
+                            pontuacaoTotalPorAluno+= ocorrencia.getPontos();
+                        }
+                    }
+                    pontuacaoTotalGrupo+=pontuacaoTotalPorAluno;
+                    AlunoTO alunoTO = new  AlunoTO();
+                    alunoTO.setGrupo(aluno.getGrupo());
+                    alunoTO.setNome(aluno.getNomeCompleto());
+                    alunoTO.setPontos(String.valueOf(pontuacaoTotalPorAluno));
+                    if (String.valueOf(aluno.getGrupo()).equals(idGrupo)) {
+                        alunos.add(alunoTO);
+                    }                    
+                }
+                request.setAttribute("totalPontos", pontuacaoTotalGrupo);
+                request.setAttribute("idGrupo", idGrupo);
+                request.setAttribute("alunos", alunos);
+                request.getRequestDispatcher("/WEB-INF/listarGrupos.jsp").forward(request, response);
+            } else {
+                List<Aluno> lista = new ArrayList<>();
+                List<Ocorrencia> ocorrencias = new ArrayList<Ocorrencia>();
+                try {
+                    AlunoDAOJPA dao = new AlunoDAOJPA(ut, emf);
+                    lista = dao.findAlunoEntities();
+                    OcorrenciaDAOJPA daoOcorrencia = new OcorrenciaDAOJPA(ut, emf);
+                    ocorrencias = daoOcorrencia.findOcorrenciaEntities();
+                    lista = dao.findAlunoEntities();
+                } catch (Exception ex) {
+                    Logger.getLogger(ListarAlunosController.class.getName()).log(Level.SEVERE, null, ex);
+                    lista = new ArrayList<Aluno>();
+                    request.setAttribute("erro", "Problema ao listar os aluno!");
+                }
+
+                List<AlunoTO> alunos = new ArrayList<AlunoTO>();
+                for (Aluno aluno : lista) {
+                    int pontuacaoTotal = 0;
+                    for (Ocorrencia ocorrencia : ocorrencias) {
+                        if (aluno.getId() == ocorrencia.getAluno().getId()) {
+                            pontuacaoTotal+= ocorrencia.getPontos();
+                        }
+                    }
+                    AlunoTO alunoTO = new  AlunoTO();
+                    alunoTO.setGrupo(aluno.getGrupo());
+                    alunoTO.setNome(aluno.getNomeCompleto());
+                    alunoTO.setPontos(String.valueOf(pontuacaoTotal));
+                    alunos.add(alunoTO);
+                }
+                request.setAttribute("alunos", alunos);
+                request.getRequestDispatcher("/WEB-INF/listar.jsp").forward(request, response);
             }
-            request.setAttribute("alunos", alunos);
-            request.getRequestDispatcher("/WEB-INF/listar.jsp").forward(request, response);
         }
     }
     

@@ -23,10 +23,10 @@
             
                 <fildset style="width:50px">
                     <legend>Visualizar gurpos</legend>
-                <a href="listar.html" style="text-decoration:none">Grupo 01</a><br>
-                <a href="listar.html" style="text-decoration:none">Grupo 02</a><br>
-                <a href="listar.html" style="text-decoration:none">Grupo 03</a><br>
-                <a href="listar.html" style="text-decoration:none">Grupo 04</a><br>
+                <a href="listar.html?id=1" style="text-decoration:none">Grupo 01</a><br>
+                <a href="listar.html?id=2" style="text-decoration:none">Grupo 02</a><br>
+                <a href="listar.html?id=3" style="text-decoration:none">Grupo 03</a><br>
+                <a href="listar.html?id=4" style="text-decoration:none">Grupo 04</a><br>
                 </fildset>
             <p>
         </form>

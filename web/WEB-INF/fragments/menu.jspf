@@ -1,12 +1,24 @@
 <nav>
     
     <h2>SIGA Alunos</h2>
+    
+    <table style="border: 1px solid black;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid black;"><a href="principal.html" style="text-decoration:none">Principal</a></th>
+                    <th style="border: 1px solid black;"><a href="novoAluno.html" style="text-decoration:none">Cadastrar Aluno</a></th>
+                    <th style="border: 1px solid black;"><a href="novoProfessor.html" style="text-decoration:none">Cadastrar Professor</a></th>
+                    <th style="border: 1px solid black;"><a href="ocorrencia.html" style="text-decoration:none">Pontuar</a></th>
+                    <th style="border: 1px solid black;"><a href="listar.html" style="text-decoration:none"> Listar Alunos</a></th>
+                    <th style="border: 1px solid black;"><a href="ocorrencias.html" style="text-decoration:none"> Ocorrencias</a></th>
+                </tr>
+            </thead>
+        </table>
         
-        <a href="principal.html" style="text-decoration:none">Principal</a> |
-        <a href="novoAluno.html" style="text-decoration:none">Aluno</a>|
-        <a href="novoProfessor.html" style="text-decoration:none">Professor</a>|
-        <a href="listar.html" style="text-decoration:none"> Listar</a>|
-        <a href="ocorrencia.html" style="text-decoration:none"> Ocorrencia</a>
+        
+        
+        
+        
         
         
 </nav>

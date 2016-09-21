@@ -11,7 +11,9 @@ import classes.DAO.OcorrenciaDAOJPA;
 import classes.DAO.ProfessorDAOJPA;
 import classes.Ocorrencia;
 import classes.Professor;
+import classes.transaction.object.OcorrenciaTO;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +34,7 @@ import javax.transaction.UserTransaction;
  *
  * @author Airton
  */
-@WebServlet(name = "OcorrenciaController", urlPatterns = {"/ocorrencia.html"})
+@WebServlet(name = "OcorrenciaController", urlPatterns = {"/ocorrencia.html", "/ocorrencias.html"})
 public class OcorrenciaController extends HttpServlet {
 
     @PersistenceUnit(unitName= "jpa-web-pu")
@@ -55,6 +57,35 @@ public class OcorrenciaController extends HttpServlet {
             session.setAttribute("alunos", alunos);
             session.setAttribute("professores", professores);
             request.getRequestDispatcher("WEB-INF/ocorrencia.jsp").forward(request, response);
+        } else if (request.getRequestURI().contains("ocorrencias.html")) {
+            List<Ocorrencia> ocorrencias = new ArrayList<Ocorrencia>();
+            try {
+                OcorrenciaDAOJPA daoOcorrencia = new OcorrenciaDAOJPA(ut, emf);
+                ocorrencias = daoOcorrencia.findOcorrenciaEntities();
+            } catch (Exception ex) {
+                Logger.getLogger(ListarAlunosController.class.getName()).log(Level.SEVERE, null, ex);
+                ocorrencias = new ArrayList<Ocorrencia>();
+                request.setAttribute("erro", "Problema ao listar ocorrências!");
+            }
+            AlunoDAOJPA alunoDao = new AlunoDAOJPA(ut, emf);
+            ProfessorDAOJPA professorDao = new ProfessorDAOJPA(ut, emf);
+            List<OcorrenciaTO> ocorrenciasTO = new ArrayList<OcorrenciaTO>();
+            for(Ocorrencia ocorrencia : ocorrencias){
+                OcorrenciaTO ocorrenciaTO = new OcorrenciaTO();
+                Long idAluno = ocorrencia.getAluno().getId();
+                Long idProfessor = ocorrencia.getProfessor().getId();
+                Aluno aluno  = alunoDao.findAluno(idAluno);
+                Professor professor  = professorDao.findProfessor(idProfessor);
+                ocorrenciaTO.setNomeProfessor(professor.getNomeProfessor());
+                ocorrenciaTO.setNomeAluno(aluno.getNomeCompleto());
+                ocorrenciaTO.setGrupo(aluno.getGrupo());
+                ocorrenciaTO.setPontos(String.valueOf(ocorrencia.getPontos()));
+                String data = new SimpleDateFormat("dd-MM-yyyy").format(ocorrencia.getDescricao());
+                ocorrenciaTO.setData(data);
+                ocorrenciasTO.add(ocorrenciaTO);
+            }
+            request.setAttribute("ocorrencias", ocorrenciasTO);
+            request.getRequestDispatcher("WEB-INF/ocorrencias.jsp").forward(request, response);
         }
     }
     
@@ -70,11 +101,12 @@ public class OcorrenciaController extends HttpServlet {
                 Aluno aluno  = daoAluno.findAluno(idAluno);
                 ProfessorDAOJPA daoProfessor = new ProfessorDAOJPA(ut, emf);
                 Long idProfessor = Long.parseLong(request.getParameter("professor"));
+                int pontos = Integer.parseInt(request.getParameter("pontos"));
                 Professor professor  = daoProfessor.findProfessor(idProfessor);
                 ocorrencia.setAluno(aluno);
                 ocorrencia.setProfessor(professor);
                 ocorrencia.setDescricao(dataAtual);
-                ocorrencia.setPontos(10);
+                ocorrencia.setPontos(pontos);
                 OcorrenciaDAOJPA daoOcorrencia = new OcorrenciaDAOJPA(ut, emf);
                 daoOcorrencia.create(ocorrencia);
                 

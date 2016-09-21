@@ -19,17 +19,21 @@
         <table style="border: 1px solid black;">
             <thead>
                 <tr>
-                    <th style="border: 1px solid black;">Nome Completo</th>
+                    <th style="border: 1px solid black;">Nome Professor</th>
+                    <th style="border: 1px solid black;">Nome Aluno</th>
                     <th style="border: 1px solid black;">Grupo</th>
                     <th style="border: 1px solid black;">Pontos</th>
+                    <th style="border: 1px solid black;">Data</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${alunos}" var="aluno">
+                <c:forEach items="${ocorrencias}" var="ocorrencia">
                     <tr>
-                        <td style="border: 1px solid black;">${aluno.nome}</td>
-                        <td style="border: 1px solid black;"><center>${aluno.grupo}</center></td>
-                        <td style="border: 1px solid black;"><center>${aluno.pontos}</center></td>
+                        <td style="border: 1px solid black;">${ocorrencia.nomeProfessor}</td>
+                        <td style="border: 1px solid black;">${ocorrencia.nomeAluno}</td>
+                        <td style="border: 1px solid black;">${ocorrencia.grupo}</td>
+                        <td style="border: 1px solid black;">${ocorrencia.pontos}</td>
+                        <td style="border: 1px solid black;">${ocorrencia.data}</td>
                     </tr>
                 </c:forEach>                
             </tbody>

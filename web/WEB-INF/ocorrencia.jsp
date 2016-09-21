@@ -34,9 +34,14 @@
                 </label>
             </div>
             <div>
+                <label>Pontos:
+                    <input type="number" name="pontos" /> 
+                </label>
+            </div>
+            <div>
                 <input type="submit" value="Cadastrar" /> 
 
-                <input type="button" value="Cancelar" onClick="nova()"/>
+                <input type="button" value="Pontuar" onClick="nova()"/>
                 <script type="text/javascript">
                 function nova(){
                 location.hreaf="listar.html"

@@ -12,18 +12,27 @@
             <legend>Ocorrência</legend>
         <jsp:include page="fragments/menu.jspf" />
         <h2>Nova Ocorrência</h2>
-        <form method="post" action="">
+        <form method="post" action="">      
             <div>
-                <label>Aluno:
-                    <select name="aaaa"> 
+                <label>Professor:
+                    <select name="professor"> 
                         <option value=""></option>
-                        <c:forEach var="aluno" items="${alunos}" >
-                          <option value="aaa">${aluno.nomeCompleto}</option>  
+                        <c:forEach var="professor" items="${professores}" >
+                          <option value="${professor.id}">${professor.nomeProfessor}</option>  
                         </c:forEach>  
                     </select>
                 </label>
             </div>
-
+            <div>
+                <label>Aluno:
+                    <select name="aluno"> 
+                        <option value=""></option>
+                        <c:forEach var="aluno" items="${alunos}" >
+                          <option value="${aluno.id}">${aluno.nomeCompleto}</option>  
+                        </c:forEach>  
+                    </select>
+                </label>
+            </div>
             <div>
                 <input type="submit" value="Cadastrar" /> 
 

@@ -72,7 +72,7 @@ public class OcorrenciaDAOJPA implements Serializable {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Long id = ocorrencia.getId();
-                if (findAluno(id) == null) {
+                if (findOcorrencia(id) == null) {
                     throw new NonexistentEntityException("The aluno with id " + id + " no longer exists.");
                 }
             }
@@ -112,15 +112,15 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
 
-    public List<Ocorrencia> findAlunoEntities() {
-        return findAlunoEntities(true, -1, -1);
+    public List<Ocorrencia> findOcorrenciaEntities() {
+        return findOcorrenciaEntities(true, -1, -1);
     }
 
-    public List<Ocorrencia> findAlunoEntities(int maxResults, int firstResult) {
-        return findAlunoEntities(false, maxResults, firstResult);
+    public List<Ocorrencia> findOcorrenciaEntities(int maxResults, int firstResult) {
+        return findOcorrenciaEntities(false, maxResults, firstResult);
     }
 
-    private List<Ocorrencia> findAlunoEntities(boolean all, int maxResults, int firstResult) {
+    private List<Ocorrencia> findOcorrenciaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
@@ -136,7 +136,7 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
 
-    public Ocorrencia findAluno(Long id) {
+    public Ocorrencia findOcorrencia(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Ocorrencia.class, id);
@@ -145,7 +145,7 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
 
-    public int getAlunoCount() {
+    public int getOcorrenciaCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();

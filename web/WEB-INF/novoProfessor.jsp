@@ -10,21 +10,13 @@
         <fieldset style="width:500px">
             <legend>Cadastro de Professor</legend>
         <jsp:include page="fragments/menu.jspf" />
-        <h2>Novo aluno</h2>
+        <h2>Novo Professor</h2>
         <form method="post" action="">
             <div>
                 <label>Nome:
                     <input type="text" name="nomeProfessor" placeholder="Nome completo"/>
                 </label>
             </div>
-            <p>
-            <div>
-                <label>Grupo 1 <input type="radio" name="grupo" value="1" />
-                <label>Grupo 2 <input type="radio" name="grupo" value="2" />
-                    <label>Grupo 3 <input type="radio" name="grupo" value="3" />
-                        <label>Grupo 4<input type="radio" name="grupo" value="4" />
-                </label>
-            </div><p>
             <div>
                 <input type="submit" value="Cadastrar" /> 
 

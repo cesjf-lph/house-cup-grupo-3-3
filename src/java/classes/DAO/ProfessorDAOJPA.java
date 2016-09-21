@@ -72,7 +72,7 @@ public class ProfessorDAOJPA implements Serializable {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Long id = professor.getId();
-                if (findAluno(id) == null) {
+                if (findProfessor(id) == null) {
                     throw new NonexistentEntityException("The aluno with id " + id + " no longer exists.");
                 }
             }
@@ -112,15 +112,15 @@ public class ProfessorDAOJPA implements Serializable {
         }
     }
 
-    public List<Professor> findAlunoEntities() {
-        return findAlunoEntities(true, -1, -1);
+    public List<Professor> findProfessorEntities() {
+        return findProfessorEntities(true, -1, -1);
     }
 
-    public List<Professor> findAlunoEntities(int maxResults, int firstResult) {
-        return findAlunoEntities(false, maxResults, firstResult);
+    public List<Professor> findProfessorEntities(int maxResults, int firstResult) {
+        return findProfessorEntities(false, maxResults, firstResult);
     }
 
-    private List<Professor> findAlunoEntities(boolean all, int maxResults, int firstResult) {
+    private List<Professor> findProfessorEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
@@ -136,7 +136,7 @@ public class ProfessorDAOJPA implements Serializable {
         }
     }
 
-    public Professor findAluno(Long id) {
+    public Professor findProfessor(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Professor.class, id);
@@ -145,7 +145,7 @@ public class ProfessorDAOJPA implements Serializable {
         }
     }
 
-    public int getAlunoCount() {
+    public int getProfessorCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();

@@ -22,20 +22,16 @@
                     <th>Nome Completo</th>
                     <th>Grupo</th>
                     <th>Pontos</th>
-                    <th>Pontuar</th>
                 </tr>
             </thead>
             <tbody>
-
                 <c:forEach items="${alunos}" var="aluno">
                     <tr>
-                        <td>${aluno.nomeCompleto}</td>
+                        <td>${aluno.nome}</td>
                         <td><center>${aluno.grupo}</center></td>
-                        <td><center></center></td>
-                        <td><center>+  -</center></td>
+                        <td><center>${aluno.pontos}</center></td>
                     </tr>
-                </c:forEach>
-                
+                </c:forEach>                
             </tbody>
         </table>
         </fieldset>

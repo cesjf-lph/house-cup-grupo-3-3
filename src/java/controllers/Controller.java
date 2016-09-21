@@ -9,6 +9,7 @@ import classes.Aluno;
 import classes.DAO.AlunoDAOJPA;
 import classes.DAO.OcorrenciaDAOJPA;
 import classes.Ocorrencia;
+import classes.Professor;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,13 +24,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 /**
  *
  * @author Airton
  */
-@WebServlet(name = "AlunoDAOController", urlPatterns = {"/principal.html", "/listar.html", "/novo.html"})
+@WebServlet(name = "AlunoDAOController", urlPatterns = {"/principal.html", "/listar.html", "/novoAluno.html", "/ocorrencia.html"})
 public class Controller extends HttpServlet {
 
     @PersistenceUnit(unitName= "jpa-web-pu")
@@ -54,16 +56,27 @@ public class Controller extends HttpServlet {
             request.setAttribute("alunos", lista);
             request.getRequestDispatcher("/WEB-INF/listar.jsp").forward(request, response);
         } 
-        else if (request.getRequestURI().contains("novo.html")){
-            request.getRequestDispatcher("/WEB-INF/novo.jsp").forward(request, response);
+        else if (request.getRequestURI().contains("novoAluno.html")){
+            request.getRequestDispatcher("/WEB-INF/novoAluno.jsp").forward(request, response);
         } else if (request.getRequestURI().contains("principal.html")){
             request.getRequestDispatcher("WEB-INF/principal.jsp").forward(request, response);
+        } else if (request.getRequestURI().contains("ocorrencia.html")){
+            //Aqui será populado a lista de professores e alunos
+            HttpSession session = request.getSession();
+            List<Aluno> alunos = new ArrayList<>();
+            List<Professor> professores = new ArrayList<>();
+            AlunoDAOJPA dao = new AlunoDAOJPA(ut, emf);
+            alunos = dao.findAlunoEntities();
+            session.setAttribute("alunos", alunos);
+            request.getRequestDispatcher("WEB-INF/ocorrencia.jsp").forward(request, response);
+        } else if (request.getRequestURI().contains("novoProfessor.html")){
+            request.getRequestDispatcher("WEB-INF/novoProfessor.jsp").forward(request, response);
         }
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getRequestURI().contains("novo.html")) {
+        if (request.getRequestURI().contains("novoAluno.html")) {
             Date dataAtual = new Date();
             Aluno aluno = new Aluno();
             aluno.setNomeCompleto(request.getParameter("nomeCompleto"));

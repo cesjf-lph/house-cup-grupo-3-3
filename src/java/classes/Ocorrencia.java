@@ -10,12 +10,15 @@ import javax.persistence.Temporal;
 
 @Entity
 public class Ocorrencia implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int pontos;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataOcorrencia;
+    private Aluno aluno;
+    private Professor professor;
 
     public Long getId() {
         return id;
@@ -31,7 +34,7 @@ public class Ocorrencia implements Serializable {
 
     public void setPontos(int pontos) {
         this.pontos = pontos;
-        
+
     }
 
     public Date getDescricao() {
@@ -41,4 +44,20 @@ public class Ocorrencia implements Serializable {
     public void setDescricao(Date dataOcorrencia) {
         this.dataOcorrencia = dataOcorrencia;
     }
+
+    public Aluno getAluno() {
+        return aluno;
     }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+}

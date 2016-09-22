@@ -62,7 +62,8 @@ public class ListarAlunosController extends HttpServlet {
                 for (Aluno aluno : lista) {
                     int pontuacaoTotalPorAluno = 0;
                     for (Ocorrencia ocorrencia : ocorrencias) {
-                        if (aluno.getId() == ocorrencia.getAluno().getId()) {
+                        if (aluno.getId() == ocorrencia.getAluno().getId()
+                                && String.valueOf(aluno.getGrupo()).equals(idGrupo)) {
                             pontuacaoTotalPorAluno+= ocorrencia.getPontos();
                         }
                     }

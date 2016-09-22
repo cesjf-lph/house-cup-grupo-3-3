@@ -27,7 +27,6 @@
             </div><p>
             <div>
                 <input type="submit" value="Cadastrar" /> 
-
                 <input type="button" value="Cancelar" onClick="nova()"/>
                 <script type="text/javascript">
                 function nova(){

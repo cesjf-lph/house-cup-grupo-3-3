@@ -40,7 +40,6 @@
             </div>
             <div>
                 <input type="submit" value="Cadastrar" /> 
-
                 <input type="button" value="Pontuar" onClick="nova()"/>
                 <script type="text/javascript">
                 function nova(){

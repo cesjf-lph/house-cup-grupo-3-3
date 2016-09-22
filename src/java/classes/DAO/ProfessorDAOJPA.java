@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package classes.DAO;
 
 import classes.DAO.exceptions.NonexistentEntityException;
@@ -18,10 +13,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.UserTransaction;
 
-/**
- *
- * @author usuario
- */
 public class ProfessorDAOJPA implements Serializable {
 
     public ProfessorDAOJPA(UserTransaction utx, EntityManagerFactory emf) {
@@ -157,5 +148,4 @@ public class ProfessorDAOJPA implements Serializable {
             em.close();
         }
     }
-    
 }

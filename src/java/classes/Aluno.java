@@ -1,7 +1,6 @@
 package classes;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,16 +34,10 @@ public class Aluno implements Serializable{
         this.nomeCompleto = nomeCompleto;
     }
 
-    /**
-     * @return the grupo
-     */
     public int getGrupo() {
         return grupo;
     }
 
-    /**
-     * @param grupo the grupo to set
-     */
     public void setGrupo(int grupo) {
         this.grupo = grupo;
     }

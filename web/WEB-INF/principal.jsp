@@ -20,7 +20,6 @@
             <div>
                 <a href="listar.html" style="text-decoration:none">Listar alunos cadastrados</a>
             </div>
-            
                 <fildset style="width:50px">
                     <legend>Visualizar gurpos</legend>
                 <a href="listar.html?id=1" style="text-decoration:none">Grupo 01</a><br>

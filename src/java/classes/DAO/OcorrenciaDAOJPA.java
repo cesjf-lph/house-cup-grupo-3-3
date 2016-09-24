@@ -149,4 +149,16 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
     
+    public List <Ocorrencia> getOcorrenciasPor(Long idGrupo) {
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT * FROM ocorrencia o " +
+"INNER JOIN aluno al on al.ID = o.ALUNO_ID where al.GRUPO = :idGrupo");
+            q.setParameter("idGrupo", idGrupo);
+            return ((List <Ocorrencia>) q.getResultList());
+        } finally {
+            em.close();
+        }
+    }
+    
 }

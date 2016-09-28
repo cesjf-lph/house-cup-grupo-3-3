@@ -11,6 +11,8 @@
                     <th style="border: 1px solid black;"><a href="ocorrencia.html" style="text-decoration:none">Pontuar</a></th>
                     <th style="border: 1px solid black;"><a href="listar.html" style="text-decoration:none"> Listar Alunos</a></th>
                     <th style="border: 1px solid black;"><a href="ocorrencias.html" style="text-decoration:none"> Ocorrencias</a></th>
+                    <th style="border: 1px solid black;"><a href="resultados.html" style="text-decoration:none"> Resultado</a></th>
+                    <th style="border: 1px solid black;"><a href="consultas.html" style="text-decoration:none"> Consulta</a></th>
                 </tr>
             </thead>
         </table>

@@ -14,7 +14,7 @@ public class Ocorrencia implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int pontos;
+    private Integer pontos;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataOcorrencia;
     private Aluno aluno;
@@ -28,11 +28,11 @@ public class Ocorrencia implements Serializable {
         this.id = id;
     }
 
-    public int getPontos() {
+    public Integer getPontos() {
         return pontos;
     }
 
-    public void setPontos(int pontos) {
+    public void setPontos(Integer pontos) {
         this.pontos = pontos;
 
     }

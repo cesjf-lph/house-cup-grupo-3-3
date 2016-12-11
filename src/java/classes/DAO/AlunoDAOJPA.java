@@ -26,6 +26,7 @@ public class AlunoDAOJPA implements Serializable {
         return emf.createEntityManager();
     }
 
+    /**Método para realizar cadastro de um novo aluno em banco de dados.*/
     public void create(Aluno aluno) throws RollbackFailureException, Exception {
         EntityManager em = null;
         try {
@@ -47,6 +48,7 @@ public class AlunoDAOJPA implements Serializable {
         }
     }
 
+    /**Método para editar o cadastro de um aluno no banco de dados.*/
     public void edit(Aluno aluno) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
@@ -75,6 +77,7 @@ public class AlunoDAOJPA implements Serializable {
         }
     }
 
+    /**Método para deletar um cadastro de aluno existente em banco.*/
     public void destroy(Long id) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {

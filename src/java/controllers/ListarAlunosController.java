@@ -29,6 +29,8 @@ public class ListarAlunosController extends HttpServlet {
     @Resource(name = "java:comp/UserTransaction")
     UserTransaction ut;
     
+    /**Método para redirecionamento para a página listar.html
+     *Montagem e população das listas de alunos e pontuações, por meio das ocorrências dos mesmos.*/
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

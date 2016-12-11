@@ -34,6 +34,8 @@ public class OcorrenciaController extends HttpServlet {
     @Resource(name = "java:comp/UserTransaction")
     UserTransaction ut;
     
+    /**Método que requisita a página ocorrencia.html
+     *Monta e popula a lista de professores e alunos*/
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getRequestURI().contains("ocorrencia.html")){
@@ -80,6 +82,7 @@ public class OcorrenciaController extends HttpServlet {
         }
     }
     
+    /**Método para gravar a ocorrencia registrada pelo professor, para o aluno.*/
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getRequestURI().contains("ocorrencia.html")) {

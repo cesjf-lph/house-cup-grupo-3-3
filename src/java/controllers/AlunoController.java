@@ -25,6 +25,7 @@ public class AlunoController extends HttpServlet {
     @Resource(name = "java:comp/UserTransaction")
     UserTransaction ut;
     
+    /**Redirecionamento para a página novoAluno.html*/
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        if (request.getRequestURI().contains("novoAluno.html")){
@@ -32,6 +33,9 @@ public class AlunoController extends HttpServlet {
         }
     }
     
+    /**Envia através da página novoAluno.html os dados para registro do aluno em banco de dados
+     *nomeCompleto
+     *grupo*/
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getRequestURI().contains("novoAluno.html")) {

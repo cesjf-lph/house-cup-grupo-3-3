@@ -26,6 +26,7 @@ public class OcorrenciaDAOJPA implements Serializable {
         return emf.createEntityManager();
     }
 
+    /**Método para registrar em banco uma ocorrencia, assim que um aluno for pontuado por um professor.*/
     public void create(Ocorrencia ocorrencia) throws RollbackFailureException, Exception {
         EntityManager em = null;
         try {
@@ -47,6 +48,7 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
 
+    /**Método para realizar alteração de uma ocorrencia já registrada em banco*/
     public void edit(Ocorrencia ocorrencia) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
@@ -75,6 +77,7 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
 
+    /**Método para apagar uma ocorrencia.*/
     public void destroy(Long id) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
@@ -136,6 +139,8 @@ public class OcorrenciaDAOJPA implements Serializable {
         }
     }
 
+    /**Método para contabilizar as ocorrencias registradas
+     * @return Long - SingleResult*/
     public int getOcorrenciaCount() {
         EntityManager em = getEntityManager();
         try {

@@ -24,6 +24,7 @@ public class ProfessorController extends HttpServlet {
     @Resource(name = "java:comp/UserTransaction")
     UserTransaction ut;
     
+    /**Redirecionamento para a página de cadastro de professores*/
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getRequestURI().contains("novoProfessor.html")){
@@ -31,6 +32,7 @@ public class ProfessorController extends HttpServlet {
         }
     }
     
+    /**Registra um novo cadastro de professor.*/
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getRequestURI().contains("novoProfessor.html")) {

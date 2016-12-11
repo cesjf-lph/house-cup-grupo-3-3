@@ -26,6 +26,7 @@ public class ProfessorDAOJPA implements Serializable {
         return emf.createEntityManager();
     }
 
+    /**Método para inserir o registro de um novo professor*/
     public void create(Professor professor) throws RollbackFailureException, Exception {
         EntityManager em = null;
         try {
@@ -47,6 +48,7 @@ public class ProfessorDAOJPA implements Serializable {
         }
     }
 
+    /**Método de edição de registro de professor já existente*/
     public void edit(Professor professor) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
@@ -75,6 +77,7 @@ public class ProfessorDAOJPA implements Serializable {
         }
     }
 
+    /**Método para excluir o registro de um professor existente*/
     public void destroy(Long id) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
@@ -127,6 +130,7 @@ public class ProfessorDAOJPA implements Serializable {
         }
     }
 
+    /**Método para localizar um professor, buscando pelo id do mesmo.*/
     public Professor findProfessor(Long id) {
         EntityManager em = getEntityManager();
         try {

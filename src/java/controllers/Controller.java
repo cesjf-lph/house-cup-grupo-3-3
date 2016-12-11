@@ -26,6 +26,8 @@ public class Controller extends HttpServlet {
     @Resource(name = "java:comp/UserTransaction")
     UserTransaction ut;
     
+    /**Redirecionamento para a página resultados.html
+     * Monta a lista de pontuação por grupos*/
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getRequestURI().contains("principal.html")){
